@@ -1,0 +1,36 @@
+.env
+*.env
+config/google_service_account.json
+config/*.json
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+venv/
+.venv/
+env/
+
+data/raw/*
+data/processed/*
+data/models/*.pkl
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/models/.gitkeep
+
+# Keep picks_log committed — it IS the public record
+# data/picks_log/ is tracked intentionally
+
+*.log
+*.db
+*.sqlite
+*.sqlite3
+
+.DS_Store
+.idea/
+.vscode/

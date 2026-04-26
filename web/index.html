@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SharpSignals — Algorithmic sports betting analytics</title>
+  <meta name="description" content="Transparent, algorithm-driven picks across NBA, NHL, MLB, EPL, and cricket. Every pick logged publicly. Every loss shown. 18+." />
+
+  <meta property="og:title" content="SharpSignals — Every pick logged. Every loss shown." />
+  <meta property="og:description" content="Algorithmic sports betting analytics. Public track record. No locked VIP picks." />
+  <meta property="og:url" content="https://sharpsignals.org" />
+  <meta property="og:image" content="https://sharpsignals.org/assets/social/og-card.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav" role="banner">
+    <a class="wordmark" href="/" aria-label="SharpSignals home">SHARPSIGNALS</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#track-record">Track record</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#follow">Follow</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Algorithmic sports analytics</p>
+      <h1>
+        Every pick logged.<br />
+        <span class="accent">Every loss shown.</span>
+      </h1>
+      <p class="subhead">
+        A model produces our picks across NBA, NHL, MLB, EPL, and cricket. Edges, odds, and units are
+        published before the game starts — wins and losses go in the same public sheet.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#track-record">See the track record</a>
+        <a class="btn btn-secondary" href="#follow">Follow on Telegram</a>
+      </div>
+      <p class="meta-line">
+        18+ · Analytical content, not betting advice · ConnexOntario 1-866-531-2600
+      </p>
+    </section>
+
+    <section id="track-record" class="section">
+      <h2>Public track record</h2>
+      <p class="section-lede">
+        Every pick we publish lands in this sheet at the same time it goes to Instagram and Telegram —
+        with the odds we got, the model's fair price, and the edge in percent. Closing line value (CLV)
+        is filled in the next morning.
+      </p>
+
+      <div class="stat-grid" aria-label="Headline metrics">
+        <div class="stat">
+          <span class="stat-label">Picks logged</span>
+          <span class="stat-value mono" id="metric-picks">—</span>
+          <span class="stat-sub">all sports, all time</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Avg CLV</span>
+          <span class="stat-value mono" id="metric-clv">—</span>
+          <span class="stat-sub">our north-star metric</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Hit rate</span>
+          <span class="stat-value mono" id="metric-hit">—</span>
+          <span class="stat-sub">break-even at 52.4% (–110)</span>
+        </div>
+      </div>
+
+      <div class="sheet-callout">
+        <p>
+          The full sheet is public and view-only. Filter by sport, by week, by edge tier — it's all there.
+        </p>
+        <a class="btn btn-secondary" id="sheet-link" href="#" target="_blank" rel="noopener">
+          Open the public sheet →
+        </a>
+      </div>
+    </section>
+
+    <section id="methodology" class="section">
+      <h2>How a pick gets made</h2>
+      <ol class="method-list">
+        <li>
+          <span class="step mono">01</span>
+          <div>
+            <h3>Scrape today's games + market odds</h3>
+            <p>One scraper per sport. Odds from The Odds API across multiple regulated books.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step mono">02</span>
+          <div>
+            <h3>Run the sport's model</h3>
+            <p>NBA &amp; NHL: Elo with rest, pace, and home-court adjustments. MLB: pitcher-adjusted win prob. EPL: Dixon-Coles Poisson. Cricket: format-specific.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step mono">03</span>
+          <div>
+            <h3>Filter by edge ≥ 3%</h3>
+            <p>If the model's fair probability beats the market's implied probability by less than 3 points, no pick. Most days have 0–3 picks total. That's the point.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step mono">04</span>
+          <div>
+            <h3>Quarter-Kelly sizing, capped at 2u</h3>
+            <p>Full Kelly is too volatile for a public record. We size at quarter-Kelly, hard-cap at 2 units, and never use "max play" or "lock" language.</p>
+          </div>
+        </li>
+        <li>
+          <span class="step mono">05</span>
+          <div>
+            <h3>Log first, post second</h3>
+            <p>The pick lands in the public sheet <em>before</em> it's posted to Instagram or Telegram. The timestamp is the proof.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="section principles">
+      <h2>Things we don't do</h2>
+      <ul class="dont-list">
+        <li><span class="x">✕</span> Charge $300/week for "guaranteed lock VIP picks"</li>
+        <li><span class="x">✕</span> Hide losses or quietly delete posted picks</li>
+        <li><span class="x">✕</span> Post fake DM screenshots or fake payout receipts</li>
+        <li><span class="x">✕</span> Use "lock", "guaranteed", "fixed", "inside info", "rigged"</li>
+        <li><span class="x">✕</span> Sell locked picks behind a paywall (legal distinction we take seriously)</li>
+        <li><span class="x">✕</span> Use sportsbook affiliates outside Ontario's AGCO-licensed list</li>
+      </ul>
+    </section>
+
+    <section id="follow" class="section follow">
+      <h2>Follow the picks</h2>
+      <div class="follow-grid">
+        <a class="follow-card" href="https://www.instagram.com/sharpsignals" target="_blank" rel="noopener">
+          <span class="follow-platform">Instagram</span>
+          <span class="follow-handle mono">@sharpsignals</span>
+          <span class="follow-desc">Daily picks + bet-slip graphics</span>
+        </a>
+        <a class="follow-card" href="https://t.me/sharpsignals" target="_blank" rel="noopener" id="telegram-card">
+          <span class="follow-platform">Telegram</span>
+          <span class="follow-handle mono">@sharpsignals</span>
+          <span class="follow-desc">Real-time channel — fastest delivery</span>
+        </a>
+        <a class="follow-card" href="#newsletter">
+          <span class="follow-platform">Newsletter</span>
+          <span class="follow-handle mono">substack →</span>
+          <span class="follow-desc">Weekly methodology + CLV breakdowns</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="footer-row">
+      <span class="wordmark-sm">SHARPSIGNALS</span>
+      <span class="footer-meta">
+        Operated from Ontario, Canada · 18+ only · Affiliate links go to AGCO-licensed sportsbooks only.
+      </span>
+    </div>
+    <p class="disclaimer">
+      Content on sharpsignals.org is analytical and educational. It is not betting advice. Sports betting carries
+      risk of financial loss. If you or someone you know has a gambling problem, call ConnexOntario at
+      <a class="mono" href="tel:1-866-531-2600">1-866-531-2600</a> or visit <a href="https://www.connexontario.ca" target="_blank" rel="noopener">connexontario.ca</a>.
+    </p>
+    <p class="copyright">© <span id="year"></span> SharpSignals. All rights reserved.</p>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
