@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Open Graph card: 1200×630 (Twitter, FB, LinkedIn, iMessage previews).
+       Hosted at /assets/social/og-card.png after we convert.
+       This is the SVG source — keep PNG output identical to this. -->
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0D1117"/>
+
+  <!-- Subtle bottom-right gradient highlight for depth -->
+  <defs>
+    <radialGradient id="glow" cx="0.85" cy="0.85" r="0.6">
+      <stop offset="0%" stop-color="#79C0FF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#79C0FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Hairline frame -->
+  <rect x="40" y="40" width="1120" height="550" rx="20" fill="none" stroke="#30363D" stroke-width="2"/>
+
+  <!-- Wordmark, top left -->
+  <text x="80" y="120"
+        font-family="system-ui, -apple-system, 'Inter', sans-serif"
+        font-size="32"
+        font-weight="700"
+        letter-spacing="3"
+        fill="#79C0FF">SHARPSIGNALS</text>
+
+  <!-- Hairline under wordmark -->
+  <line x1="80" y1="150" x2="1120" y2="150" stroke="#30363D" stroke-width="2"/>
+
+  <!-- Eyebrow -->
+  <text x="80" y="220"
+        font-family="ui-monospace, 'JetBrains Mono', Menlo, monospace"
+        font-size="22"
+        letter-spacing="2"
+        fill="#79C0FF">ALGORITHMIC SPORTS ANALYTICS</text>
+
+  <!-- Headline (two-line) -->
+  <text x="80" y="320"
+        font-family="system-ui, -apple-system, 'Inter', sans-serif"
+        font-size="84"
+        font-weight="700"
+        fill="#E6EDF3">Every pick logged.</text>
+  <text x="80" y="410"
+        font-family="system-ui, -apple-system, 'Inter', sans-serif"
+        font-size="84"
+        font-weight="700"
+        fill="#79C0FF">Every loss shown.</text>
+
+  <!-- Sub -->
+  <text x="80" y="475"
+        font-family="system-ui, -apple-system, 'Inter', sans-serif"
+        font-size="26"
+        fill="#8B949E">NBA · NHL · MLB · EPL · Cricket — public track record at sharpsignals.org</text>
+
+  <!-- Footer compliance -->
+  <text x="80" y="560"
+        font-family="system-ui, -apple-system, 'Inter', sans-serif"
+        font-size="20"
+        fill="#8B949E">18+ · Analytical content, not betting advice · ConnexOntario 1-866-531-2600</text>
+
+  <!-- Decorative line-chart mark, bottom-right corner -->
+  <g stroke="#79C0FF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.6">
+    <path d="M 850 540 L 920 480 L 970 510 L 1080 420"/>
+  </g>
+  <circle cx="1080" cy="420" r="7" fill="#79C0FF" opacity="0.6"/>
+</svg>
