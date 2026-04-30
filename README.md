@@ -1,6 +1,6 @@
 # SharpSignals
 
-Transparent, algorithmic sports betting analytics across NBA, NHL, MLB, EPL, and cricket.
+Transparent, algorithmic sports betting analytics across NBA, NHL, MLB, soccer, and cricket.
 
 ## Start here
 

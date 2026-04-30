@@ -41,12 +41,12 @@
 | 13 | "How we handle losing streaks" — honest post showing a bad day |
 | 14 | Week 2 transparency report |
 
-## Week 3 — EPL + newsletter warmup
+## Week 3 — Soccer + newsletter warmup
 
 | Day | Content |
 | --- | ------- |
-| 15 | EPL coverage live — Dixon-Coles explainer |
-| 16 | First EPL picks |
+| 15 | Soccer coverage live — Dixon-Coles explainer |
+| 16 | First soccer picks |
 | 17 | Announce newsletter launch (free tier) |
 | 18 | "5 concepts every bettor should know but doesn't" — Reel series start |
 | 19 | Daily picks + newsletter signup CTA |

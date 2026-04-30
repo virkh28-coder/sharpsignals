@@ -2,7 +2,7 @@
 
 ## What this business is
 
-A **transparent, algorithm-driven sports analytics brand** covering NBA, NHL, MLB, EPL (soccer), and cricket.
+A **transparent, algorithm-driven sports analytics brand** covering NBA, NHL, MLB, soccer, and cricket.
 
 **It is explicitly NOT:**
 - A tipster account pretending to be a human expert
@@ -29,7 +29,7 @@ Transparency is the **moat**. Every competitor in this niche hides losses. We do
 | NBA     | nba_api + The Odds API                 | Elo + pace/efficiency             |
 | NHL     | api-web.nhle.com + MoneyPuck           | Elo + expected goals              |
 | MLB     | statsapi.mlb.com + pybaseball          | Pitcher-adjusted win probability  |
-| EPL     | football-data.org + Understat (xG)     | Poisson goals model               |
+| Soccer  | football-data.org + Understat (xG)     | Poisson goals model (EPL focus)   |
 | Cricket | Sportmonks or CricketData + Cricinfo   | Format-specific (T20 / ODI / Test)|
 
 ## Model philosophy (v0)
@@ -73,7 +73,7 @@ Every pick published with:
 5. Build content_agent using Claude API (Sonnet 4.6) for captions
 6. Build graphic generator (PIL → branded bet-slip image)
 7. Build scheduler_agent for IG via Meta Graph API
-8. Replicate 2–6 for MLB → NHL → EPL → cricket
+8. Replicate 2–6 for MLB → NHL → Soccer → cricket
 9. Launch Substack newsletter
 10. Apply to sportsbook affiliate programs
 

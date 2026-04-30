@@ -78,7 +78,7 @@ For "weekly transparency report" posts:
 ```
 SharpSignals · Algorithmic sports analytics
 Every pick logged. Every loss shown.
-NBA · NHL · MLB · EPL · Cricket
+NBA · NHL · MLB · Soccer · Cricket
 sharpsignals.org · 18+ · ConnexOntario
 ```
 

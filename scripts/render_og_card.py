@@ -104,11 +104,11 @@ def render() -> Path:
     # Sub
     sub_font = load_font("sans", 24, "Regular")
     draw.text((PAD + 16, 425),
-              "NBA · NHL · MLB · EPL · Cricket — public track record",
+              "NBA · NHL · MLB · Soccer · Cricket — public track record",
               fill=TEXT_MUTED, font=sub_font)
 
     # CTA pill (bottom-right)
-    cta_text = "sharpsignals.org  →"
+    cta_text = "sharpsignals.org  >"
     cta_font = load_font("sans", 24, "Bold")
     bbox = draw.textbbox((0, 0), cta_text, font=cta_font)
     text_w, text_h = bbox[2] - bbox[0], bbox[3] - bbox[1]

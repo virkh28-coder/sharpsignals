@@ -55,11 +55,12 @@ Quarter-Kelly because full Kelly is too volatile for a public track record. Hard
 - Bullpen adjustment, park factors (Coors, Fenway, etc.)
 - Output: ML, run line, totals
 
-### EPL — Dixon-Coles Poisson
+### Soccer — Dixon-Coles Poisson
 - Base: attack/defense strengths via Dixon-Coles
 - Enhancement: recent xG-for and xG-against (10 matches, exp decay)
-- Home advantage: ~0.3 goals (EPL historical)
+- Home advantage: ~0.3 goals (EPL historical baseline; tune per league)
 - Output: 1X2, over/under, BTTS
+- Initial coverage: EPL; expandable to La Liga, Bundesliga, Serie A, Ligue 1, Champions League
 
 ### Cricket — format-specific
 - T20: batting impact + bowling impact + venue + DLS-aware

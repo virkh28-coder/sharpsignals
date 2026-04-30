@@ -27,7 +27,7 @@ class GameOdds:
 class Game:
     """Normalized game/event + all markets/books we found."""
 
-    sport: str               # "NBA", "NHL", "MLB", "EPL", "CRICKET"
+    sport: str               # "NBA", "NHL", "MLB", "SOCCER", "CRICKET"
     event_id: str            # stable id from source API where possible
     home_team: str
     away_team: str

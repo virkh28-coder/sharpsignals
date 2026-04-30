@@ -19,7 +19,7 @@ Subline (smaller, `#8B949E`): `algorithmic sports analytics — sharpsignals.org
 ```
 SharpSignals.
 
-An algorithm — not a guru — produces our picks across NBA, NHL, MLB, EPL, and cricket. Every pick lands in a public Google Sheet at the same time it goes here. Wins and losses go in the same column.
+An algorithm — not a guru — produces our picks across NBA, NHL, MLB, soccer, and cricket. Every pick lands in a public Google Sheet at the same time it goes here. Wins and losses go in the same column.
 
 The metric we actually care about is Closing Line Value. If our picks consistently get a better number than the market closes at, we're sharp. If they don't, we don't deserve your follow — and the public sheet will show that.
 
@@ -262,4 +262,4 @@ Append the same 5–7 tags to each post (don't over-tag — IG penalizes spam-ta
 #sportsbetting #sportsanalytics #betting #nba #closinglinevalue #bettingtwitter #algorithmictrading
 ```
 
-Swap in `#nhl`, `#mlb`, `#epl`, `#ipl` when the relevant sport is featured.
+Swap in `#nhl`, `#mlb`, `#soccer`, `#ipl` when the relevant sport is featured.

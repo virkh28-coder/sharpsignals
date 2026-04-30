@@ -9,7 +9,7 @@ All 5 sports covered with **~$100–160/mo combined** (~$1,200–1,920/year), fi
 | NBA     | stats.nba.com (via `nba_api`)         | The Odds API  | $0 + shared  |
 | NHL     | api-web.nhle.com + MoneyPuck          | The Odds API  | $0 + shared  |
 | MLB     | statsapi.mlb.com + pybaseball         | The Odds API  | $0 + shared  |
-| EPL     | football-data.org + Understat (xG)    | The Odds API  | $0 + shared  |
+| Soccer  | football-data.org + Understat (xG)    | The Odds API  | $0 + shared  |
 | Cricket | Sportmonks / CricketData + Cricinfo   | The Odds API  | $20–40       |
 
 Shared: **The Odds API $30/mo** + **Claude API $50–100/mo**.
@@ -62,7 +62,7 @@ Season: Apr–Oct, ~15 games/day = massive content volume.
 
 ---
 
-## EPL (+ top European leagues)
+## Soccer (EPL + top European leagues)
 
 **Stats: football-data.org**
 - `https://api.football-data.org/v4/`
@@ -128,5 +128,5 @@ Annual: **$1,200–1,920** — leaves room for domain (~$12/yr) + VPS (~$60–12
 1. **NBA** — cleanest API, high game volume, best US affiliate economics
 2. **MLB** — similar free data, high game volume during summer
 3. **NHL** — official API, manageable
-4. **EPL** — xG enrichment adds complexity
+4. **Soccer** — xG enrichment adds complexity (start with EPL)
 5. **Cricket** — most complex stack, save for last (and it's IPL-ready for March launch)

@@ -39,9 +39,9 @@
 
 ---
 
-## Week 3 — add EPL + start newsletter
+## Week 3 — add Soccer + start newsletter
 
-- [ ] Add EPL scraper + Dixon-Coles model
+- [ ] Add Soccer scraper + Dixon-Coles model (EPL focus initially, expandable to top 5 leagues)
 - [ ] Set up Substack at `sharpsignals.substack.com`
 - [ ] First newsletter: "What We Learned From Week 1 of Public Picks" (CLV breakdown)
 - [ ] Free tier: weekly recap. Paid tier ($19/mo): deeper weekly methodology + unit-level breakdowns

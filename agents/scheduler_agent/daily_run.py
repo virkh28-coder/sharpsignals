@@ -35,7 +35,7 @@ logging.basicConfig(
 log = logging.getLogger("scheduler")
 
 
-ACTIVE_SPORTS = ["NBA"]  # add MLB, NHL, EPL, CRICKET as they come online
+ACTIVE_SPORTS = ["NBA"]  # add MLB, NHL, SOCCER, CRICKET as they come online
 
 
 def run_sport(sport: str) -> int:
@@ -111,10 +111,26 @@ def _predict(sport: str, games):
 
 
 def _build_odds_lookup(games) -> dict:
-    lookup = {}
+    """Map (event_id, market, canonical_selection) → list[GameOdds].
+
+    Canonical selection includes the line for spreads/totals so multiple
+    lines for the same team don't collide on a single key (which would
+    silently produce phantom edges of 25%+). Format must match what
+    NBAModel emits as `ModelPrediction.selection`:
+      - moneyline  → team name (e.g. "Los Angeles Lakers")
+      - spread     → "{team} {line:+.1f}"  (e.g. "Los Angeles Lakers -3.5")
+      - total      → "over {line}" / "under {line}"
+    """
+    lookup: dict = {}
     for g in games:
         for o in g.odds:
-            lookup.setdefault((g.event_id, o.market, o.selection), []).append(o)
+            sel = o.selection
+            if o.market == "spread" and o.line is not None:
+                sel = f"{o.selection} {o.line:+.1f}"
+            elif o.market == "total" and o.line is not None:
+                side = "over" if o.selection.lower().startswith("over") else "under"
+                sel = f"{side} {o.line}"
+            lookup.setdefault((g.event_id, o.market, sel), []).append(o)
     return lookup
 
 

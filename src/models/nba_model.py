@@ -181,79 +181,87 @@ class NBAModel:
         ]
 
     def _spread_predictions(self, game: Game, p_home: float) -> list[ModelPrediction]:
-        """For each unique spread line offered, emit both sides.
+        """For each (team, spread_line) combo offered, emit a prediction.
 
-        Approximation: convert win prob → expected margin via Elo→margin
-        regression (NBA-specific: each Elo point ≈ 0.034 points). Then assume
-        margin ~ Normal(expected, sigma=12 points) and integrate over each line.
-        Sigma=12 is roughly the historical NBA stdev of point margin.
+        Selection encodes the line so that downstream lookup can match the
+        right odds row to the right prediction. Without this, two books
+        offering different lines for the same team collide on a single key
+        and you get false 25%+ edges (the math compares one line's odds to
+        another line's fair prob).
+
+        Math: convert Elo gap → expected margin (NBA-specific coefficient
+        ~0.034 points per Elo point). Assume margin ~ Normal(mean, sigma=12).
+        Sigma=12 is the historical NBA stdev of point margin.
         """
         SIGMA = 12.0
-        # Elo → expected margin (home pov). Coefficient calibrated from historical.
         rating_diff = (
             self.elo.get(game.home_team) + self.elo.home_advantage
             - self.elo.get(game.away_team)
         )
         expected_margin_home = rating_diff * 0.034
 
-        seen_lines: set[float] = set()
+        seen: set[tuple[str, float]] = set()
         out: list[ModelPrediction] = []
         for o in game.odds:
             if o.market != "spread" or o.line is None:
                 continue
-            if o.line in seen_lines:
+            key = (o.selection, o.line)
+            if key in seen:
                 continue
-            seen_lines.add(o.line)
+            seen.add(key)
 
-            # If the line is +3, the home team needs to win by more than +3
-            # for the home -3 side to cash. We compute P(home_margin > -line_for_home)
-            # for the home side, and 1 - that for the away side.
-            # The line stored is from the side's perspective; we infer side by team.
+            # Home team covers a line of L when home_margin > -L:
+            #   line=-3.5 (home favored): covers when margin > 3.5
+            #   line=+3.5 (home dog):     covers when margin > -3.5
+            # Away team covers when home_margin < -L_away (= L_home).
             if o.selection == game.home_team:
                 p_cover = _p_normal_above(-o.line, expected_margin_home, SIGMA)
                 team = game.home_team
             else:
-                p_cover = 1.0 - _p_normal_above(-(-o.line), expected_margin_home, SIGMA)
+                # Away's line has opposite sign to home's; away covers when
+                # home margin < o.line (away). Equivalent: 1 - P(margin > line).
+                p_cover = 1.0 - _p_normal_above(o.line, expected_margin_home, SIGMA)
                 team = game.away_team
+
             out.append(
                 ModelPrediction(
                     sport="NBA",
                     event_id=game.event_id,
                     event_label=f"{game.away_team} @ {game.home_team}",
                     market="spread",
-                    selection=team,
+                    selection=f"{team} {o.line:+.1f}",
                     fair_probability=p_cover,
                 )
             )
         return out
 
     def _total_predictions(self, game: Game) -> list[ModelPrediction]:
-        """Over/under predictions for each unique total line offered.
+        """Over/under predictions for each (side, total_line) combo offered.
 
-        Approximation: total ~ Normal(expected_total, sigma=18). Sigma=18
-        comes from historical NBA combined-points stdev.
+        Same line-keyed dedup as spreads — if two books offer 225.5 and 226.5
+        for the same total, we want two predictions, not one. Selection
+        encodes the line so the lookup matches the right odds.
+
+        Total ~ Normal(expected_total, sigma=18) — sigma=18 is historical NBA
+        combined-points stdev.
         """
         SIGMA = 18.0
         expected = self.expected_total(game.home_team, game.away_team)
 
-        seen_lines: set[float] = set()
+        seen: set[tuple[str, float]] = set()
         out: list[ModelPrediction] = []
         for o in game.odds:
             if o.market != "total" or o.line is None:
                 continue
-            if o.line in seen_lines:
+            key = (o.selection.lower(), o.line)
+            if key in seen:
                 continue
-            seen_lines.add(o.line)
+            seen.add(key)
 
+            is_over = o.selection.lower().startswith("over")
             p_over = _p_normal_above(o.line, expected, SIGMA)
-            label = f"over {o.line}" if o.selection.lower().startswith("over") else f"under {o.line}"
-            # Emit whichever side this odds row represents.
-            if o.selection.lower().startswith("over"):
-                p = p_over
-                label = f"over {o.line}"
-            else:
-                p = 1.0 - p_over
-                label = f"under {o.line}"
+            p = p_over if is_over else 1.0 - p_over
+            label = f"{'over' if is_over else 'under'} {o.line}"
             out.append(
                 ModelPrediction(
                     sport="NBA",
